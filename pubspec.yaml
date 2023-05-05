@@ -1,0 +1,33 @@
+name: aula_9
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  collection: ^1.16.0
+  cupertino_icons: ^1.0.2
+
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  assets: 
+    - assets/images/
+  uses-material-design: true
+
+ 
