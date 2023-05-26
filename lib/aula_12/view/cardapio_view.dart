@@ -1,7 +1,8 @@
 import 'package:aula_9/aula_12/model/produto.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'package:badges/badges.dart';
+import 'package:aula_9/aula_12/model/carrinho_model.dart';
 
 class CardapioView extends StatelessWidget {
   const CardapioView({super.key});
@@ -9,13 +10,16 @@ class CardapioView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Produto> produtos = Produto.gerarLista();
+    var carrinho = context.watch<CarrinhoModel>();
     return Scaffold(
       appBar: AppBar(
         actions: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: const Badge(
-              child: Icon(
+            child: Badge(
+              badgeContent: Text('${carrinho.numProdutos}'),
+              showBadge: carrinho.numProdutos > 0,
+              child: const Icon(
                 Icons.shopping_cart,
               ),
             ),
@@ -30,13 +34,20 @@ class CardapioView extends StatelessWidget {
             subtitle: Text('R\$ ${produtos[index].preco.toStringAsFixed(2)}'),
             trailing: Padding(
               padding: const EdgeInsets.all(8),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.add,
-                  color: Colors.blueAccent,
-                ),
-              ),
+              child: carrinho.adicionado(produtos[index])
+                  ? IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.check),
+                    )
+                  : IconButton(
+                      onPressed: () {
+                        carrinho.adicionar(produtos[index]);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
             ),
           );
         }),

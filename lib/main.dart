@@ -3,12 +3,17 @@ import 'package:aula_9/aula_09/view/aula09_dashboard.dart';
 import 'package:aula_9/aula_09/view/aula09_disciplinas.dart';
 import 'package:aula_9/aula_10/aula_10.dart';
 import 'package:aula_9/aula_10/view/aula10_future.dart';
+import 'package:aula_9/aula_12/model/carrinho_model.dart';
 import 'package:aula_9/aula_12/view/cardapio_view.dart';
 import 'package:flutter/material.dart';
 import 'package:aula_9/aula_09/aula09.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: ((context) => CarrinhoModel()),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
