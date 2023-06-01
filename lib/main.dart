@@ -5,6 +5,7 @@ import 'package:aula_9/aula_10/aula_10.dart';
 import 'package:aula_9/aula_10/view/aula10_future.dart';
 import 'package:aula_9/aula_12/model/carrinho_model.dart';
 import 'package:aula_9/aula_12/view/cardapio_view.dart';
+import 'package:aula_9/aula_12/view/pedido_view.dart';
 import 'package:flutter/material.dart';
 import 'package:aula_9/aula_09/aula09.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/aula_10': (context) => const Aula10(),
         '/aula10_future': (context) => const Aula10Future(),
         '/cardapio_view': (context) => const CardapioView(),
+        '/pedido_view': (context) => const PedidoView(),
       },
     );
   }
