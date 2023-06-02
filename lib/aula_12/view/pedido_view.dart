@@ -1,4 +1,5 @@
 import 'package:aula_9/aula_12/model/carrinho_model.dart';
+import 'package:aula_9/aula_13/widgets/card_carrinho.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,29 +14,37 @@ class PedidoView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          ListView.builder(
-            itemCount: carrinho.numProdutos,
-            itemBuilder: (context, index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(carrinho.produtos[index].nome),
-                  Text(
-                      'R\$ ${carrinho.produtos[index].preco.toStringAsFixed(2)}'),
-                ],
-              );
-            },
+          Expanded(
+            child: ListView.builder(
+              itemCount: carrinho.numProdutos,
+              itemBuilder: (context, index) {
+                var produto = carrinho.produtos[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 8,
+                  ),
+                  child: CardCarrinho(
+                    nome: carrinho.produtos[index].nome,
+                    price: carrinho.produtos[index].preco,
+                  ),
+                );
+              },
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Text('Total'),
-              const SizedBox(
-                width: 8,
-              ),
-              Text('R\$ ${carrinho.vlTotal}'),
-            ],
-          )
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text('Total'),
+                const SizedBox(
+                  width: 8,
+                ),
+                Text('R\$ ${carrinho.vlTotal}'),
+              ],
+            ),
+          ),
         ],
       ),
     );

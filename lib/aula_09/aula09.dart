@@ -14,7 +14,8 @@ class _Aula09State extends State<Aula09> {
 
   void _alterarBottomNav(int idx) {
     if (idx == 2) {
-      Navigator.pop(context);
+      //Navigator.pop(context);
+      _showDialog(context);
     }
     setState(() {
       _itemSelecionado = idx;
@@ -22,14 +23,56 @@ class _Aula09State extends State<Aula09> {
   }
 
   final List<Widget> _subtelas = [
-    Aula09Dashboard(),
-    Aula09Disciplinas(),
+    const Aula09Dashboard(),
+    const Aula09Disciplinas(),
   ];
+
+  bool _deslogar = false;
+  _logoff() {
+    if (_deslogar) {
+      Navigator.of(context).pop();
+    }
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: ((context) {
+        return AlertDialog(
+          title: Text("Você Deseja Sair?"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                _deslogar = true;
+                Navigator.of(context).pop(_logoff());
+              },
+              icon: Icon(
+                Icons.check_circle_outline,
+                size: 40,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(
+                Icons.cancel_outlined,
+                size: 40,
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+          ],
+        );
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     var args =
         ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+
     return WillPopScope(
       onWillPop: () async {
         return false;

@@ -6,6 +6,7 @@ import 'package:aula_9/aula_10/view/aula10_future.dart';
 import 'package:aula_9/aula_12/model/carrinho_model.dart';
 import 'package:aula_9/aula_12/view/cardapio_view.dart';
 import 'package:aula_9/aula_12/view/pedido_view.dart';
+import 'package:aula_9/aula_13/theme/color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:aula_9/aula_09/aula09.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        colorScheme: lightColorScheme,
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: darkColorScheme,
+        useMaterial3: true,
       ),
       initialRoute: '/cardapio_view',
       routes: {
