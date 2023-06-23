@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:aula_9/aula_09/aula09.dart';
 import 'package:provider/provider.dart';
 
+import 'aula_15/view/consulta_fipe_view.dart';
+
 void main() {
   runApp(ChangeNotifierProvider(
     create: ((context) => CarrinhoModel()),
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: darkColorScheme,
         useMaterial3: true,
       ),
-      initialRoute: '/cardapio_view',
+      initialRoute: '/fipe',
       routes: {
         '/': (context) => const Aula08(),
         '/aula09': (context) => const Aula09(),
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/aula10_future': (context) => const Aula10Future(),
         '/cardapio_view': (context) => const CardapioView(),
         '/pedido_view': (context) => const PedidoView(),
+        '/fipe': (context) => const ConsultaFipeView(),
       },
     );
   }
